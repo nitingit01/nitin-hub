@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Interactive Personal Hub</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <div class="brand">My Hub</div>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About & Skills</a></li>
+          <li><a href="#planner">Planner</a></li>
+          <li><a href="#weather">Weather</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          🌙
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-inner">
+          <img
+            class="avatar"
+            src="assets/images/nitin-profile.jpeg"
+            alt="Avatar (replace with his photo)"
+          />
+          <div class="hero-text">
+            <h1>Hello — I'm Nitin</h1>
+            <p class="lead">
+              A beginner web developer learning HTML, CSS, and JavaScript. This
+              interactive hub demonstrates skills through small real-world
+              widgets: a planner, weather dashboard, and quiz — each a
+              mini-project.
+            </p>
+            <div class="cta-row">
+              <a href="#about" class="btn">About me</a>
+              <a href="#planner" class="btn btn-outline">Try the planner</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="panel about-panel">
+        <h2>About & Skills</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm currently learning web development. My focus is on building
+              practical tools and learning how APIs and browser storage work.
+              I'm eager to contribute and learn more through hands-on projects.
+            </p>
+          </div>
+          <div class="skills">
+            <div class="skill">
+              <div class="skill-title">HTML</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct: 85%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">CSS</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct: 75%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">JavaScript</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct: 60%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">C++</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct: 45%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">Database Management</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct: 25%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="planner" class="panel planner-panel">
+        <div class="planner-header">
+          <h2>Task Planner</h2>
+          <p class="sub">Plan your day with priorities</p>
+        </div>
+
+        <form id="task-form" class="task-form">
+          <input
+            id="task-input"
+            type="text"
+            placeholder="Add a new task..."
+            required
+          />
+          <select id="task-priority">
+            <option value="low">Low</option>
+            <option value="normal" selected>Normal</option>
+            <option value="high">High</option>
+          </select>
+          <button type="submit" class="btn">Add</button>
+        </form>
+
+        <ul id="task-list" class="task-list"></ul>
+
+        <div class="planner-footer">
+          <button id="clear-completed" class="btn btn-small">
+            Clear Completed
+          </button>
+          <button id="clear-all" class="btn btn-small btn-outline">
+            Clear All
+          </button>
+        </div>
+      </section>
+
+      <section id="weather" class="panel">
+        <h2>Weather</h2>
+        <div class="weather-widget">
+          <div class="weather-controls">
+            <input
+              id="city-input"
+              type="text"
+              placeholder="Enter city (or use location)"
+            />
+            <div class="weather-buttons">
+              <button id="get-city-weather" class="btn">Get</button>
+              <button id="get-location-weather" class="btn btn-outline">
+                Use My Location
+              </button>
+            </div>
+          </div>
+          <div id="weather-output" class="weather-output">
+            <p class="muted">Weather will appear here.</p>
+          </div>
+        </div>
+        <p class="muted small">
+          Tip: To enable location, allow the browser to access location. You
+          must set your OpenWeatherMap API key in the JS file.
+        </p>
+      </section>
+
+      <section id="quiz" class="panel">
+        <h2>Fun Quiz</h2>
+        <div class="quiz-widget">
+          <div class="quiz-controls">
+            <label>
+              Amount:
+              <select id="quiz-amount">
+                <option>5</option>
+                <option selected>10</option>
+                <option>15</option>
+              </select>
+            </label>
+            <label>
+              Category:
+              <select id="quiz-category">
+                <option value="">Any</option>
+                <option value="9">General Knowledge</option>
+                <option value="18">Science: Computers</option>
+                <option value="21">Sports</option>
+              </select>
+            </label>
+            <button id="start-quiz" class="btn">Start Quiz</button>
+          </div>
+
+          <div id="quiz-area" class="quiz-area" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="contact" class="panel">
+        <h2>Contact</h2>
+        <p>
+          If you'd like to get in touch:
+          <a href="mailto:nitingpt29@gmail.com">nitingpt29@gmail.com</a>
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/nitingit01" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+          ·
+          <a
+            href="https://www.linkedin.com/in/nitin-gupta-12a6a6275"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Have a ❤️ — Nitin Kumar Gupta</small>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
